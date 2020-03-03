@@ -1,0 +1,20 @@
+en:
+  layouts:
+    footer:
+      accessibility: Accessibility
+      conditions: Terms and conditions of use
+      consul: CONSUL application
+      consul_url: https://github.com/consul/consul
+      contact_us: For technical assistance visit
+      copyright: Mérida City Hall, %{year}
+      description: This portal uses the %{consul} which is %{open_source}.
+      open_source: open-source software
+      open_source_url: http://www.gnu.org/licenses/agpl-3.0.html
+      participation_text: Decide how to shape the Mérida you want to live in.
+      participation_title: Participation
+      privacy: Privacy Policy
+      transparency_title: Transparency
+      transparency_text: Find out anything about the Mérida City Council.
+      transparency_url: http://transparencia.madrid.es
+      faq: Technical assistance
+      feder: European Regional Development Fund
