@@ -1,0 +1,53 @@
+<%= back_link_to %>
+
+<h2 id="top"><%= t("admin.stats.proposals.title") %></h2>
+
+<div class="stats">
+  <div class="row stats-numbers">
+    <div class="small-12 medium-3 column">
+      <p class="featured">
+        <%= t("admin.stats.proposals.web_participants") %><br>
+        <span id="web_participants" class="number">
+
+        </span>
+      </p>
+    </div>
+
+    <div class="small-12 medium-3 column end">
+      <p class="featured">
+        <%= t("admin.stats.proposals.total_participants") %><br>
+        <span id="participants" class="number">
+
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<h2><%= t("admin.stats.proposals.all") %></h2>
+<table id="proposals" class="stack sortable">
+  <thead>
+    <tr>
+      <th><%= t("admin.stats.proposals.table.proposal_name") %></th>
+      <th class="name text-right"><%= t("admin.stats.proposals.supports") %></th>
+      <th class="name text-right"><%= t("admin.stats.proposals.supports") %></th>
+    </tr>
+  </thead>
+  <% @proposals.each do |proposal| %>
+    <tr id="<%= dom_id(proposal) %>">
+      <td class="name">
+        <%= link_to proposal.title, proposal_path(proposal) %>
+      </td>
+      <td class="name text-right">
+        <!--proposal.voters.select(:user_id).distinct.count -->
+        <%= proposal.total_votes %>
+  
+      </td>
+      <td class="name text-right">
+        <!-- proposal.voters.web.select(:user_id).distinct.count -->
+        <%= geozone_name(proposal) %>
+
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -19,6 +19,7 @@ class Admin::StatsController < Admin::BaseController
     @unverified_users = User.active.unverified.count
     @users = User.active.count
 
+
     @user_ids_who_voted_proposals = ActsAsVotable::Vote.where(votable_type: "Proposal")
                                                        .distinct
                                                        .count(:voter_id)
@@ -27,6 +28,22 @@ class Admin::StatsController < Admin::BaseController
     budgets_ids = Budget.where.not(phase: "finished").pluck(:id)
     @budgets = budgets_ids.size
     @investments = Budget::Investment.where(budget_id: budgets_ids).count
+
+
+    @total_male_participants = User.active.level_two_or_three_verified.male.count
+    @total_female_participants = User.active.level_two_or_three_verified.female.count
+
+    @age_groups = {}
+    age_groups.map do |start, finish|
+      @age_groups[range_description(start, finish)] = User.active.level_two_or_three_verified.between_ages(start,finish).count
+    end
+
+    @geozones = Geozone.all.order("name")
+    @verified_users_in_geozone = {}
+    @geozones.each do |geozone|
+      @verified_users_in_geozone[geozone] = verified_users_in_geozone(geozone)
+    end
+
   end
 
   def graph
@@ -43,6 +60,10 @@ class Admin::StatsController < Admin::BaseController
   def proposal_notifications
     @proposal_notifications = ProposalNotification.all
     @proposals_with_notifications = @proposal_notifications.select(:proposal_id).distinct.count
+  end
+
+  def proposals
+    @proposals = ::Proposal.not_archived.unsuccessful.sort_by_confidence_score
   end
 
   def direct_messages
@@ -97,5 +118,26 @@ class Admin::StatsController < Admin::BaseController
       includes(:budget_investment).
       where(budget_investments: { heading_id: heading.id }).
       select("votes.voter_id").distinct.count
+    end
+
+    def age_groups
+      [[0, 17],
+       [18, 35],
+       [36, 64],
+       [65, 300]
+      ]
+    end
+
+    def range_description(start, finish)
+      if finish > 200
+        I18n.t("admin.stats.show.summary.age_more_than", start: start)
+      else
+        I18n.t("admin.stats.show.summary.age_range", start: start, finish: finish)
+      end
+    end
+
+    def verified_users_in_geozone(geozone)
+      User.active.level_two_or_three_verified.
+      where(geozone_id: geozone.id).count
     end
 end

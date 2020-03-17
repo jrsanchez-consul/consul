@@ -104,3 +104,31 @@ a {
 	width: 330px;
     margin-bottom: 10px;
 }
+
+// 04. Stats
+// ---------
+
+.stats {
+  background: #fff;
+}
+
+.stats-numbers {
+  p {
+    color: $text-medium;
+    font-size: rem-calc(13);
+    padding: rem-calc(6);
+    text-transform: uppercase;
+
+    &.featured {
+      background: $highlight;
+      border: 1px solid $highlight-border;
+      font-weight: bold;
+    }
+
+    .number {
+      color: $text;
+      font-size: rem-calc(30);
+      font-weight: bold;
+    }
+  }
+}
