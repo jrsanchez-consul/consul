@@ -1,0 +1,67 @@
+<%= back_link_to %>
+
+<h2 id="top"><%= t("admin.stats.proposals.title") %></h2>
+
+<div class="stats">
+  <div class="row stats-numbers">
+
+    <div class="small-12 medium-3 column">
+      <p class="featured">
+        <%= t("admin.stats.proposals.total_proposals") %><br>
+        <span class="number">
+          <%= number_with_delimiter(@total_proposals) %>
+        </span>
+      </p>
+    </div>
+
+    <% @total_district_proposals.each do |geozone, count| %>
+      <div class="small-12 medium-3 column">
+        <p class="featured">
+          <%= t("admin.stats.proposals.total_district_proposals", dist: geozone.name) %> <br>
+          <span class="number">
+            <%= number_with_delimiter(count) %>
+          </span>
+        </p>
+      </div>
+    <% end %>
+
+    <div class="small-12 medium-3 column end">
+      <p class="featured">
+        <%= t("admin.stats.proposals.total_supports") %><br>
+        <span class="number">
+          <%= number_with_delimiter(@total_supports) %>
+        </span>
+      </p>
+    </div>
+
+
+  </div>
+</div>
+
+<h2><%= t("admin.stats.proposals.all") %></h2>
+<table id="proposals" class="stack sortable">
+  <thead>
+    <tr>
+      <th><%= t("admin.stats.proposals.table.proposal_name") %></th>
+      <th class="name text-right"><%= t("admin.stats.proposals.table.district_name") %></th>
+      <th class="name text-right"><%= t("admin.stats.proposals.table.supports") %></th>
+    </tr>
+  </thead>
+  <% @proposals.each do |proposal| %>
+    <tr id="<%= dom_id(proposal) %>">
+
+      <td class="name">
+        <%= link_to proposal.title, proposal_path(proposal) %>
+      </td>
+
+      <td class="name text-right">
+        <%= geozone_name(proposal) %>
+      </td>
+      
+      <td class="name text-right">
+        <%= proposal.total_votes %>
+      </td>
+
+    </tr>
+  <% end %>
+</table>

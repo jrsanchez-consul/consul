@@ -1,0 +1,45 @@
+es:
+  admin:
+    stats:
+      show:
+        stats_title: Estadísticas
+        summary:
+          comment_votes: Votos en comentarios
+          comments: Comentarios
+          debate_votes: Votos en debates
+          debates: Debates
+          proposal_votes: Votos en propuestas (apoyos)
+          proposals: Propuestas
+          budgets: Presupuestos abiertos
+          budget_investments: Proyectos de gasto
+          unverified_users: Usuarios sin verificar
+          user_level_three: Participantes de nivel tres
+          user_level_two: Participantes de nivel dos
+          users: Usuarios
+          verified_users: Participantes
+          verified_users_who_didnt_vote_proposals: Participantes que no han votado propuestas
+          visits: Visitas
+          votes: Votos
+          total_male_participants: Participantes masculinos
+          total_female_participants: Participantes femeninos
+          age_range: Participantes entre %{start} y %{finish} años
+          age_more_than: Participantes mayores de %{start} años
+          total_participants_district: Participantes de %{dist}
+        budgets_title: Presupuestos participativos
+        participatory_budgets: Presupuestos Participativos
+        direct_messages: Mensajes directos
+        proposal_notifications: Notificaciones de propuestas
+        incomplete_verifications: Verificaciones incompletas
+        polls: Votaciones
+        proposals: Propuestas
+      proposals:
+        title: Estadísticas de propuestas
+        all: Propuestas
+        total_proposals: Propuestas
+        total_district_proposals: Propuestas in %{dist}
+        total_supports: Apoyos totales
+        table:
+          proposal_name: Propuesta
+          district_name: Distrito
+          supports: Apoyos
+      
