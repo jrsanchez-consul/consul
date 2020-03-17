@@ -20,16 +20,11 @@ es:
           verified_users_who_didnt_vote_proposals: Participantes que no han votado propuestas
           visits: Visitas
           votes: Votos
-
           total_male_participants: Participantes masculinos
           total_female_participants: Participantes femeninos
           age_range: Participantes entre %{start} y %{finish} años
           age_more_than: Participantes mayores de %{start} años
           total_participants_district: Participantes de %{dist}
-
-          total_participants_between: Participantes entre %{begin} y %{end} años
-          total_participants_over: Participantes mayores de %{begin} años
-
         budgets_title: Presupuestos participativos
         participatory_budgets: Presupuestos Participativos
         direct_messages: Mensajes directos
@@ -38,5 +33,13 @@ es:
         polls: Votaciones
         proposals: Propuestas
       proposals:
-        supports: Apoyos
+        title: Estadísticas de propuestas
+        all: Propuestas
+        total_proposals: Propuestas
+        total_district_proposals: Propuestas in %{dist}
+        total_supports: Apoyos totales
+        table:
+          proposal_name: Propuesta
+          district_name: Distrito
+          supports: Apoyos
       

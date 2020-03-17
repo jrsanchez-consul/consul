@@ -63,7 +63,15 @@ class Admin::StatsController < Admin::BaseController
   end
 
   def proposals
-    @proposals = ::Proposal.not_archived.unsuccessful.sort_by_confidence_score
+    @proposals = Proposal.with_hidden.sort_by_confidence_score
+    @total_proposals = Proposal.with_hidden.count
+    @total_supports = Proposal.with_hidden.sum(:cached_votes_up)
+    
+    @geozones = Geozone.all.order("name")
+    @total_district_proposals = {}
+    @geozones.each do |geozone|
+      @total_district_proposals[geozone] = total_district_proposals(geozone)
+    end
   end
 
   def direct_messages
@@ -138,6 +146,11 @@ class Admin::StatsController < Admin::BaseController
 
     def verified_users_in_geozone(geozone)
       User.active.level_two_or_three_verified.
+      where(geozone_id: geozone.id).count
+    end
+
+    def total_district_proposals(geozone)
+      Proposal.with_hidden.
       where(geozone_id: geozone.id).count
     end
 end
