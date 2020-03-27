@@ -3,3 +3,132 @@
 // * English: https://github.com/consul/consul/blob/master/CUSTOMIZE_EN.md#css
 // * Spanish: https://github.com/consul/consul/blob/master/CUSTOMIZE_ES.md#css
 //
+
+a {
+  &:focus {
+    outline: 3px solid $dark;
+  }
+}
+
+.locale-form {
+  .locale-switcher {
+    &:focus {
+      outline: 3px solid $dark;
+    }
+  }
+}
+
+.button {
+  &:hover {
+    background: $dark;
+  }
+ }
+
+ header {
+  background: #fff;
+ }
+
+
+.top-bar {
+  background: #fff !important;
+  color: #222;
+
+  .menu .menu-text {
+    a {
+      color: #fff;
+  	}
+  }
+  
+  .menu > li {
+    a {
+      color: #222;
+    }
+
+    .button {
+      @include breakpoint(medium) {
+        background: $brand;
+        color: #fff;
+      }
+      &:hover {
+		background: $dark;
+      }
+    }
+  }
+}
+
+.dropdown.menu > li {
+  &.is-active > a {
+    color: #222;
+  }
+  &.is-dropdown-submenu-parent > a::after {
+    border-color: #222 transparent transparent;
+  }
+}
+
+.subnavigation {
+
+  @include breakpoint(medium) {
+    background: $brand;
+  }
+
+  a {
+    color: #fff;
+
+    @include breakpoint(medium) {
+      color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &.is-active {
+      color: #fff;
+
+      @include breakpoint(medium) {
+        border-bottom: 2px solid #fff;
+        color: #fff;
+      }
+    }
+  }
+
+  .input-group-button {
+    button {
+      background: $border;
+      border: 1px solid #ccc;
+    }
+  }
+}
+
+.logo_feder {
+	width: 330px;
+    margin-bottom: 10px;
+}
+
+// 04. Stats
+// ---------
+
+.stats {
+  background: #fff;
+}
+
+.stats-numbers {
+  p {
+    color: $text-medium;
+    font-size: rem-calc(13);
+    padding: rem-calc(6);
+    text-transform: uppercase;
+
+    &.featured {
+      background: $highlight;
+      border: 1px solid $highlight-border;
+      font-weight: bold;
+    }
+
+    .number {
+      color: $text;
+      font-size: rem-calc(30);
+      font-weight: bold;
+    }
+  }
+}
